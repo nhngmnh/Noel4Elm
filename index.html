@@ -69,6 +69,140 @@
             overflow: hidden; opacity: 0; /* Hidden by default but functional */
             pointer-events: none;
         }
+        
+        /* Help Button */
+        #help-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            color: #fceea7;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            pointer-events: all;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+        }
+        #help-button:hover {
+            background: rgba(212, 175, 55, 0.4);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Modal */
+        #help-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            animation: fadeIn 0.3s ease;
+        }
+        #help-modal.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-title {
+            color: #fceea7;
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            text-shadow: 0 0 20px rgba(252, 238, 167, 0.4);
+        }
+
+        .modal-instructions {
+            color: #e0e0e0;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+            border-left: 3px solid #d4af37;
+        }
+
+        .instruction-icon {
+            font-size: 32px;
+            margin-right: 15px;
+            min-width: 40px;
+        }
+
+        .instruction-text {
+            flex: 1;
+        }
+
+        .instruction-title {
+            font-weight: bold;
+            color: #fceea7;
+            margin-bottom: 5px;
+        }
+
+        .instruction-desc {
+            color: #c0c0c0;
+            font-size: 14px;
+        }
+
+        #ok-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4cf6f 100%);
+            border: none;
+            border-radius: 10px;
+            color: #1a1a1a;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        #ok-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.6);
+        }
     </style>
     
     <style>
@@ -643,6 +777,26 @@
         }
 
         init();
+        
+        // Help Modal Controls
+        const helpButton = document.getElementById('help-button');
+        const helpModal = document.getElementById('help-modal');
+        const okButton = document.getElementById('ok-button');
+
+        helpButton.addEventListener('click', () => {
+            helpModal.classList.add('active');
+        });
+
+        okButton.addEventListener('click', () => {
+            helpModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        helpModal.addEventListener('click', (e) => {
+            if (e.target === helpModal) {
+                helpModal.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
