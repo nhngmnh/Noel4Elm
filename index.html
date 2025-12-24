@@ -238,6 +238,47 @@
         <canvas id="webcam-preview"></canvas>
     </div>
 
+    <!-- Help Button -->
+    <div id="help-button">?</div>
+
+    <!-- Help Modal -->
+    <div id="help-modal">
+        <div class="modal-content">
+            <h2 class="modal-title">🎄 Hướng Dẫn Sử Dụng 🎄</h2>
+            <div class="modal-instructions">
+                <div class="instruction-item">
+                    <div class="instruction-icon">👋</div>
+                    <div class="instruction-text">
+                        <div class="instruction-title">Dang Tay Ra</div>
+                        <div class="instruction-desc">Các hình ảnh sẽ tung tóe ra xung quanh. Di chuyển tay để xoay cảnh.</div>
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">✊</div>
+                    <div class="instruction-text">
+                        <div class="instruction-title">Nắm Tay Lại</div>
+                        <div class="instruction-desc">Các hình ảnh sẽ tập trung lại thành cây thông.</div>
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">☝️</div>
+                    <div class="instruction-text">
+                        <div class="instruction-title">Giơ Ngón Trỏ</div>
+                        <div class="instruction-desc">Phóng to một ảnh ngẫu nhiên để xem rõ hơn.</div>
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">↔️</div>
+                    <div class="instruction-text">
+                        <div class="instruction-title">Di Chuyển Tay</div>
+                        <div class="instruction-desc">Xoay và điều khiển góc nhìn (khi dang tay)</div>
+                    </div>
+                </div>
+            </div>
+            <button id="ok-button">Bắt Đầu</button>
+        </div>
+    </div>
+
     <script type="module">
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
